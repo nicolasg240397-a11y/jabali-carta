@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta QR - Jabalí</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo-container">
+                <img src="logo.jpeg" alt="Jabalí Logo" class="brand-logo">
+            </div>
+            <h1 class="logo">JABALÍ</h1>
+            <p class="subtitle">Elegí una de las tres barras</p>
+        </header>
+
+        <nav class="category-nav">
+            <button class="nav-btn active" data-target="pizzeria">Pizzería</button>
+            <button class="nav-btn" data-target="hamburgueseria">Hamburguesería</button>
+            <button class="nav-btn" data-target="tragos">Tragos</button>
+        </nav>
+
+        <main class="menu-content">
+            <!-- Pizzería Section -->
+            <section id="pizzeria" class="menu-section active">
+
+                <!-- Pizza Grande -->
+                <div class="menu-category">
+                    <h2 class="category-title">Pizza Grande</h2>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Muzzarella</h3>
+                                <span class="item-price">$23.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Napolitana</h3>
+                                <span class="item-price">$26.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Fugazzetta Rellena</h3>
+                                <span class="item-price">$42.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jamón y Morrón</h3>
+                                <span class="item-price">$28.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cuatro Quesos</h3>
+                                <span class="item-price">$28.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tomate y Huevo</h3>
+                                <span class="item-price">$26.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Peperoni</h3>
+                                <span class="item-price">$26.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Provolone</h3>
+                                <span class="item-price">$28.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Rúcula y Crudo</h3>
+                                <span class="item-price">$32.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Champiñones y Panceta</h3>
+                                <span class="item-price">$32.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empanadas -->
+                <div class="menu-category">
+                    <h2 class="category-title">Empanadas</h2>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Carne</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Bondiola con Barbacoa</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jamón y Queso</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cuatro Quesos</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Caprese</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Humita</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Verdura</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Pollo al verdeo</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza por Porción -->
+                <div class="menu-category">
+                    <h2 class="category-title">Pizza por Porción</h2>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Muzzarella</h3>
+                                <span class="item-price">$4.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Napolitana</h3>
+                                <span class="item-price">$5.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Fugazzetta Rellena</h3>
+                                <span class="item-price">$9.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jamón y Morrón</h3>
+                                <span class="item-price">$5.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Fainá</h3>
+                                <span class="item-price">$3.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Postres -->
+                <div class="menu-category">
+                    <h2 class="category-title">Postres</h2>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Panqueques con dulce de leche</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vigilante</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Flan casero con DDL</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hamburguesería Section -->
+            <section id="hamburgueseria" class="menu-section d-none">
+
+                <!-- Hamburguesas -->
+                <div class="menu-category">
+                    <h2 class="category-title">Hamburguesas</h2>
+                    <p class="category-desc">Acompañadas con papas o chips</p>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Malcriada</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna y queso</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Mac Grande</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, queso cheddar, lechuga, pepino, salsa Utah
+                                (mayonesa, ketchup, ajo, aceite de oliva, ciboulette, reducción de pepino en almíbar)
+                            </p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tercio de Libra</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, queso cheddar, pepino, salsa españa (cebolla,
+                                ketchup, mostaza)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">4-4-2</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, queso dambo, jamón cocido, lechuga, tomate y
+                                huevo frito</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ricky Fort</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, manteca de roquefort y cebolla caramelizada
+                            </p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Crispy</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, queso cheddar, panceta ahumada, cebolla
+                                crispy y salsa Utah</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Maradona</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, provoleta, salsa criolla, tomate y lechuga
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item-extras">
+                        <p><strong>Aclaración:</strong> Medallón vegetariano y pan sin tacc disponible para todas las
+                            opciones</p>
+                        <p>Opción pan sin tacc: <strong>+$3.500</strong></p>
+                        <p>Doble medallón: <strong>+$4.000</strong></p>
+                    </div>
+                </div>
+
+                <!-- Sandwiches -->
+                <div class="menu-category">
+                    <h2 class="category-title">Sandwiches</h2>
+                    <p class="category-desc">Acompañados con papas o chips</p>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Trucha al limón</h3>
+                                <span class="item-price">$21.000</span>
+                            </div>
+                            <p class="item-desc">Trucha a la plancha, lechuga, cebolla morada y salsa de queso crema,
+                                ciboulette y limón</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Bondiola</h3>
+                                <span class="item-price">$20.000</span>
+                            </div>
+                            <p class="item-desc">Pan ciabatta, bondiola de cerdo desmechada, salsa barbacoa, cebolla
+                                caramelizada y queso gratinado</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Brie y Crudo</h3>
+                                <span class="item-price">$20.000</span>
+                            </div>
+                            <p class="item-desc">Pan baguette, queso brie, jamón crudo, rúcula, aceite de oliva y pesto
+                                de tomates asados</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vegano</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Pan ciabatta, tofu a la plancha, ensalada mixta, hummus de garbanzos y
+                                veganesa de chimichurri</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tostado clásico</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                            <p class="item-desc">Pan de molde, queso dambo y jamón cocido</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vegetariano caliente o tostado</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                            <p class="item-desc">Lechuga, tomate, zanahoria, palmitos, huevo duro y queso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panchos -->
+                <div class="menu-category">
+                    <h2 class="category-title">Panchos</h2>
+                    <p class="category-desc">Acompañados con papas o chips</p>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ricky fort</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                            <p class="item-desc">Con manteca de roquefort y cebolla caramelizada</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Criollo</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Con salsa criolla (cebolla, tomate, morrón, ajo, perejil y vinagre)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cheddar</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Con queso cheddar cremoso</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Pelado</h3>
+                                <span class="item-price">$9.000</span>
+                            </div>
+                            <p class="item-desc">Sin nada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Para picar -->
+                <div class="menu-category">
+                    <h2 class="category-title">Para Picar</h2>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Papas fritas</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Papas a caballo</h3>
+                                <span class="item-price">$13.000</span>
+                            </div>
+                            <p class="item-desc">Papas fritas con huevo frito</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Papas con cheddar</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Papas fritas con cheddar, panceta y cebolla de verdeo</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Chips de batata</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Rodajas finas de batatas fritas</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Provoleta con vegetales asados</h3>
+                                <span class="item-price">$16.000</span>
+                            </div>
+                            <p class="item-desc">A la plancha con puerro, tomates cherry y vinagreta de aceite de oliva,
+                                miel, vinagre, sal y pimienta</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Provoleta con morcilla</h3>
+                                <span class="item-price">$16.000</span>
+                            </div>
+                            <p class="item-desc">A la plancha con morcilla cortada en rodajas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ensaladas -->
+                <div class="menu-category">
+                    <h2 class="category-title">Ensaladas</h2>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tropitango</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Rúcula, queso brie, queso roquefort, tomates cherry, manzana verde,
+                                nueces y vinagreta de mostaza y miel</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ensalada Cesar</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Lechuga, rúcula, pollo, parmesano, croutones y aderezo</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ensalada Serrana</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Lechuga, rúcula, jamón crudo, croutones, parmesano, tomate y palta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Postres -->
+                <div class="menu-category">
+                    <h2 class="category-title">Postres</h2>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Panqueques con dulce de leche</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vigilante</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Flan casero con DDL</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tragos Section -->
+            <section id="tragos" class="menu-section d-none">
+                <div class="placeholder">
+                    <p>Próximamente: Menú de Tragos</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
