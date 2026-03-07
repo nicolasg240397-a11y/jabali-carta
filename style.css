@@ -164,19 +164,27 @@ header {
 }
 
 .toggle-icon {
-    color: var(--gold-primary);
-    font-size: 1.5rem;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid var(--gold-primary);
+    border-bottom: 2px solid var(--gold-primary);
+    transform: rotate(45deg);
     transition: transform 0.3s ease;
+    margin-right: 5px;
+    margin-top: -5px;
 }
 
 /* When the category is collapsed, items-grid is hidden and the chevron rotates */
-.menu-category.collapsed .items-grid, 
+.menu-category.collapsed .items-grid,
 .menu-category.collapsed .category-desc {
     display: none;
 }
 
 .menu-category.collapsed .toggle-icon {
-    transform: rotate(-90deg);
+    transform: rotate(-135deg);
+    /* Point right when collapsed */
+    margin-top: 0;
 }
 
 .category-desc {
@@ -410,7 +418,8 @@ header {
 }
 
 .menu-content {
-    padding-bottom: 4rem; /* Extra padding for bottom of page */
+    padding-bottom: 4rem;
+    /* Extra padding for bottom of page */
 }
 
 /* Hide items completely that don't match search */
