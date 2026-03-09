@@ -53,10 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (isBeer) {
-            inner += `<div class="beer-badges">
-                        <span class="beer-badge">${item.abv} ABV</span>
-                        <span class="beer-badge">${item.style}</span>
-                      </div>`;
+            const abvBadge = item.abv ? `<span class="beer-badge">${item.abv} ABV</span>` : '';
+            const styleBadge = item.style ? `<span class="beer-badge">${item.style}</span>` : '';
+            inner += `<div class="beer-badges">${abvBadge}${styleBadge}</div>`;
         } else if (dietBadges.length > 0) {
             inner += `<div class="diet-tags-row">${dietBadges.join('')}</div>`;
         }
