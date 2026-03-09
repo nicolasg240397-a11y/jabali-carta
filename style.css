@@ -36,23 +36,28 @@ header {
     text-align: center;
     margin-bottom: 2.5rem;
     animation: fadeInDown 0.8s ease-out;
+    position: relative;
+}
+
+.header-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .logo-container {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 1.5rem;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--gold-primary);
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+    width: 180px;
+    /* Pull the title up so it overlaps the bottom of the logo */
+    margin-bottom: -33px;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .brand-logo {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.9));
 }
 
 .logo {
@@ -66,6 +71,9 @@ header {
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
+    /* Title sits on top of the logo's bottom edge */
+    position: relative;
+    z-index: 1;
 }
 
 .subtitle {
@@ -126,22 +134,7 @@ header {
     animation: slideUpFade 0.6s ease-out forwards;
 }
 
-/* Staggering animations */
-.menu-category:nth-child(1) {
-    animation-delay: 0.1s;
-}
 
-.menu-category:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.menu-category:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-.menu-category:nth-child(4) {
-    animation-delay: 0.4s;
-}
 
 
 .category-header {
@@ -295,6 +288,7 @@ header {
 
 .item-extras {
     margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 0.75rem;
     background: rgba(212, 175, 55, 0.05);
     border-radius: 8px;
@@ -382,6 +376,91 @@ header {
     color: rgba(255, 255, 255, 0.3);
 }
 
+/* Diet Filters */
+.diet-filters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 0 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.diet-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.diet-btn {
+    background: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: var(--text-gray);
+    padding: 0.5rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.diet-btn:hover {
+    border-color: rgba(212, 175, 55, 0.35);
+    color: var(--text-white);
+}
+
+.diet-btn.active {
+    background: var(--gold-gradient);
+    color: #000;
+    border-color: transparent;
+    box-shadow: 0 3px 12px rgba(212, 175, 55, 0.25);
+}
+
+/* Diet tag badges inside items */
+.diet-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.diet-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.12rem 0.45rem;
+    border-radius: 100px;
+    letter-spacing: 0.2px;
+}
+
+.tag-vegano {
+    background: rgba(52, 170, 68, 0.12);
+    border: 1px solid rgba(52, 170, 68, 0.35);
+    color: #6fcf7f;
+}
+
+.tag-vegetariano {
+    background: rgba(80, 200, 90, 0.1);
+    border: 1px solid rgba(80, 200, 90, 0.3);
+    color: #82d492;
+}
+
+.tag-sin-tacc {
+    background: rgba(230, 180, 60, 0.1);
+    border: 1px solid rgba(230, 180, 60, 0.3);
+    color: #e6b43c;
+}
+
+.tag-sin-alcohol {
+    background: rgba(100, 160, 230, 0.1);
+    border: 1px solid rgba(100, 160, 230, 0.3);
+    color: #7db8f0;
+}
+
 /* Back to Top Button */
 #backToTopBtn {
     position: fixed;
@@ -399,7 +478,7 @@ header {
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
-    transition: all 0.3s ease;
+    transition: var(--transition);
     z-index: 999;
     display: flex;
     justify-content: center;
@@ -425,4 +504,110 @@ header {
 /* Hide items completely that don't match search */
 .menu-item.hidden {
     display: none !important;
+}
+
+.vinos-placeholder {
+    text-align: center;
+    width: 100%;
+}
+
+.vinos-placeholder .item-desc {
+    font-size: 1.1rem;
+    margin-top: 0;
+}
+
+/* Beer Cards with Background Image */
+.beer-card {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+}
+
+.beer-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(5, 5, 5, 0.92) 0%, rgba(5, 5, 5, 0.55) 100%);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    z-index: 0;
+}
+
+.beer-card .item-header,
+.beer-card .item-desc,
+.beer-card .item-extras,
+.beer-card .beer-badges {
+    position: relative;
+    z-index: 1;
+}
+
+.beer-badges {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.beer-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    letter-spacing: 0.3px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--gold-primary);
+}
+
+/* Developer Footer */
+.dev-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dev-credit {
+    font-size: 0.75rem;
+    color: rgba(161, 161, 170, 0.6);
+    letter-spacing: 0.5px;
+}
+
+.dev-credit strong {
+    color: rgba(212, 175, 55, 0.7);
+}
+
+.dev-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(212, 175, 55, 0.8);
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(212, 175, 55, 0.05);
+    transition: var(--transition);
+    letter-spacing: 0.3px;
+}
+
+.dev-instagram:hover {
+    background: rgba(212, 175, 55, 0.12);
+    border-color: rgba(212, 175, 55, 0.5);
+    color: var(--gold-primary);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
+}
+
+.dev-tagline {
+    font-size: 0.7rem;
+    color: rgba(161, 161, 170, 0.4);
+    font-style: italic;
 }

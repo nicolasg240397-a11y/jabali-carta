@@ -1,126 +1,207 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Fullscreen behavior on first user interaction
+
+    // ── Fullscreen on first tap ──────────────────────────────────────────────
     const enterFullscreen = () => {
         const elem = document.documentElement;
         if (!document.fullscreenElement) {
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen().catch(err => console.log("Fullscreen API error:", err));
-            } else if (elem.webkitRequestFullscreen) { /* Safari */
-                elem.webkitRequestFullscreen().catch(err => console.log("Fullscreen API error:", err));
-            } else if (elem.msRequestFullscreen) { /* IE11 */
-                elem.msRequestFullscreen().catch(err => console.log("Fullscreen API error:", err));
-            }
+            const request = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.msRequestFullscreen;
+            if (request) request.call(elem).catch(() => { });
         }
-        // Remove listeners after first trigger attempt to avoid repeated prompt if user exits fullscreen
         document.removeEventListener('click', enterFullscreen);
         document.removeEventListener('touchstart', enterFullscreen);
     };
-
     document.addEventListener('click', enterFullscreen);
     document.addEventListener('touchstart', enterFullscreen, { passive: true });
 
-    const navBtns = document.querySelectorAll('.nav-btn');
-    const sections = document.querySelectorAll('.menu-section');
+    // ── State ────────────────────────────────────────────────────────────────
+    let activeFilter = 'all';
+    let searchTerm = '';
 
-    navBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons and sections
-            navBtns.forEach(b => b.classList.remove('active'));
-            sections.forEach(s => s.classList.remove('active'));
+    // ── Render helpers ───────────────────────────────────────────────────────
+    function renderItem(item) {
+        const tags = (item.tags || []).join(' ');
+        const isBeer = !!item.beerCard;
 
-            // Add active class to clicked button
-            btn.classList.add('active');
+        let classes = 'menu-item';
+        if (isBeer) classes += ' beer-card';
 
-            // Show target section
-            const targetId = btn.getAttribute('data-target');
-            document.getElementById(targetId).classList.add('active');
+        let styleAttr = isBeer ? ` style="background-image:url('${item.image}')"` : '';
 
-            // Re-trigger animation by doing a slight DOM redraw trick 
-            const targetSection = document.getElementById(targetId);
-            const categories = targetSection.querySelectorAll('.menu-category');
-            categories.forEach(cat => {
-                cat.style.animation = 'none';
-                cat.offsetHeight; /* trigger reflow */
-                cat.style.animation = null;
-            });
-        });
-    });
+        let inner = `
+            <div class="item-header">
+                <h3 class="item-name">${item.name}</h3>
+                ${item.price ? `<span class="item-price">${item.price}</span>` : ''}
+            </div>`;
 
-    // --- Back to Top Button ---
-    const backToTopBtn = document.getElementById('backToTopBtn');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
+        if (item.isPlaceholder) {
+            return `<div class="menu-item vinos-placeholder" data-tags="">
+                        <p class="item-desc">Consultar en barra</p>
+                    </div>`;
         }
-    });
 
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
+        if (item.desc) {
+            inner += `<p class="item-desc">${item.desc}</p>`;
+        }
 
-    // --- Collapsible Categories ---
-    const categoryHeaders = document.querySelectorAll('.category-header');
-    
-    categoryHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const category = header.closest('.menu-category');
-            category.classList.toggle('collapsed');
-        });
-    });
+        // Diet tag badges on the item
+        const dietBadges = [];
+        if (item.tags) {
+            if (item.tags.includes('vegano')) dietBadges.push('<span class="diet-tag tag-vegano">🌱 Vegano</span>');
+            if (item.tags.includes('vegetariano') && !item.tags.includes('vegano')) dietBadges.push('<span class="diet-tag tag-vegetariano">🥦 Vegetariano</span>');
+            if (item.tags.includes('sin-tacc') && !isBeer) dietBadges.push('<span class="diet-tag tag-sin-tacc">🌾 Sin TACC</span>');
+            if (item.tags.includes('sin-alcohol')) dietBadges.push('<span class="diet-tag tag-sin-alcohol">🚫 Sin Alcohol</span>');
+        }
 
-    // --- Search Functionality ---
-    const searchInput = document.getElementById('searchInput');
-    
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase().trim();
+        if (isBeer) {
+            inner += `<div class="beer-badges">
+                        <span class="beer-badge">${item.abv} ABV</span>
+                        <span class="beer-badge">${item.style}</span>
+                      </div>`;
+        } else if (dietBadges.length > 0) {
+            inner += `<div class="diet-tags-row">${dietBadges.join('')}</div>`;
+        }
+
+        return `<div class="${classes}"${styleAttr} data-tags="${tags}">${inner}</div>`;
+    }
+
+    function renderCategory(cat, index) {
+        const gridClass = cat.gridClass ? ` ${cat.gridClass}` : '';
+        const descHtml = cat.desc ? `<p class="category-desc">${cat.desc}</p>` : '';
+
+        let extrasHtml = '';
+        if (cat.extras && cat.extras.length > 0) {
+            extrasHtml = `<div class="item-extras">${cat.extras.map(e => `<p>${e}</p>`).join('')}</div>`;
+        }
+
+        const itemsHtml = cat.items.map(renderItem).join('\n');
+
+        return `
+        <div class="menu-category" style="animation-delay:${(index + 1) * 0.1}s">
+            <div class="category-header">
+                <h2 class="category-title">${cat.title}</h2><span class="toggle-icon"></span>
+            </div>
+            ${descHtml}
+            ${extrasHtml}
+            <div class="items-grid${gridClass}">
+                ${itemsHtml}
+            </div>
+        </div>`;
+    }
+
+    function renderSection(section) {
+        const categoriesHtml = section.categories.map((cat, i) => renderCategory(cat, i)).join('\n');
+        return `
+        <section id="${section.id}" class="menu-section">
+            ${categoriesHtml}
+        </section>`;
+    }
+
+    // ── Filter logic ─────────────────────────────────────────────────────────
+    function applyFilters() {
         const activeSection = document.querySelector('.menu-section.active');
-        
         if (!activeSection) return;
 
-        const categories = activeSection.querySelectorAll('.menu-category');
-
-        categories.forEach(category => {
+        activeSection.querySelectorAll('.menu-category').forEach(category => {
             const items = category.querySelectorAll('.menu-item');
-            let hasVisibleItems = false;
+            let visibleCount = 0;
 
             items.forEach(item => {
-                const itemName = item.querySelector('.item-name')?.textContent.toLowerCase() || '';
-                const itemDesc = item.querySelector('.item-desc')?.textContent.toLowerCase() || '';
+                const name = item.querySelector('.item-name')?.textContent.toLowerCase() || '';
+                const desc = item.querySelector('.item-desc')?.textContent.toLowerCase() || '';
+                const tags = item.dataset.tags || '';
 
-                if (itemName.includes(searchTerm) || itemDesc.includes(searchTerm)) {
-                    item.classList.remove('hidden');
-                    hasVisibleItems = true;
-                } else {
-                    item.classList.add('hidden');
-                }
+                const matchesSearch = searchTerm === '' || name.includes(searchTerm) || desc.includes(searchTerm);
+                const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+
+                const visible = matchesSearch && matchesFilter;
+                item.classList.toggle('hidden', !visible);
+                if (visible) visibleCount++;
             });
 
-            // Hide the entire category if no items match
-            if (hasVisibleItems || searchTerm === '') {
-                category.style.display = 'block';
-                // If searching and found something, ensure it's not collapsed
-                if (searchTerm !== '') {
-                    category.classList.remove('collapsed');
-                }
+            if (visibleCount > 0 || (activeFilter === 'all' && searchTerm === '')) {
+                category.style.display = '';
+                if (searchTerm !== '') category.classList.remove('collapsed');
             } else {
                 category.style.display = 'none';
             }
         });
-    });
+    }
 
-    // Clear search when changing tabs
-    navBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            searchInput.value = '';
-            // Trigger input event to reset view
-            searchInput.dispatchEvent(new Event('input'));
+    // ── Load JSON and boot ───────────────────────────────────────────────────
+    fetch('menu.json')
+        .then(r => r.json())
+        .then(data => {
+            const menuRoot = document.getElementById('menu-root');
+            menuRoot.innerHTML = data.sections.map(renderSection).join('\n');
+
+            // Activate first section
+            const firstSection = menuRoot.querySelector('.menu-section');
+            if (firstSection) firstSection.classList.add('active');
+
+            // ── Navigation ───────────────────────────────────────────────────
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
+
+                    btn.classList.add('active');
+                    const targetSection = document.getElementById(btn.dataset.target);
+                    targetSection.classList.add('active');
+
+                    // Re-trigger stagger animation
+                    targetSection.querySelectorAll('.menu-category').forEach((cat, i) => {
+                        cat.style.animationDelay = `${(i + 1) * 0.1}s`;
+                        cat.style.animation = 'none';
+                        void cat.offsetHeight;
+                        cat.style.animation = null;
+                    });
+
+                    searchInput.value = '';
+                    searchTerm = '';
+                    applyFilters();
+                });
+            });
+
+            // ── Collapsible categories ────────────────────────────────────────
+            menuRoot.addEventListener('click', e => {
+                const header = e.target.closest('.category-header');
+                if (header) {
+                    header.closest('.menu-category').classList.toggle('collapsed');
+                }
+            });
+
+            // ── Search ───────────────────────────────────────────────────────
+            searchInput.addEventListener('input', e => {
+                searchTerm = e.target.value.toLowerCase().trim();
+                applyFilters();
+            });
+
+            // ── Diet filters ─────────────────────────────────────────────────
+            document.querySelectorAll('.diet-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.diet-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeFilter = btn.dataset.filter;
+                    applyFilters();
+                });
+            });
+        })
+        .catch(err => {
+            document.getElementById('menu-root').innerHTML =
+                `<p style="color:#a1a1aa;text-align:center;padding:3rem">Error cargando el menú. Intentá recargar la página.</p>`;
+            console.error('Error loading menu.json:', err);
         });
-    });
-});
 
+    // ── Back to top ──────────────────────────────────────────────────────────
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+        backToTopBtn.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── Search input reference (declared early for nav handler) ──────────────
+    const searchInput = document.getElementById('searchInput');
+});
