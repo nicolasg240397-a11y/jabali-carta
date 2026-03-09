@@ -1,0 +1,613 @@
+:root {
+    --bg-color: #050505;
+    --text-white: #ffffff;
+    --text-gray: #a1a1aa;
+    --gold-primary: #d4af37;
+    --gold-gradient: linear-gradient(135deg, #FFDF73 0%, #D4AF37 50%, #996A00 100%);
+    --surface-color: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(212, 175, 55, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+}
+
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    min-height: 100vh;
+}
+
+/* Header Elements */
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeInDown 0.8s ease-out;
+    position: relative;
+}
+
+.header-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container {
+    width: 180px;
+    /* Pull the title up so it overlaps the bottom of the logo */
+    margin-bottom: -33px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.brand-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.9));
+}
+
+.logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    /* Title sits on top of the logo's bottom edge */
+    position: relative;
+    z-index: 1;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    font-weight: 300;
+}
+
+/* Navigation */
+.category-nav {
+    display: flex;
+    justify-content: space-between;
+    background: var(--surface-color);
+    padding: 0.5rem;
+    border-radius: 100px;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 1rem;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-gray);
+    padding: 0.75rem 0.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 100px;
+    flex: 1;
+    transition: var(--transition);
+}
+
+.nav-btn.active {
+    background: var(--gold-gradient);
+    color: #000;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Menu Content */
+.menu-section {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.menu-section.active {
+    display: block;
+}
+
+.menu-category {
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUpFade 0.6s ease-out forwards;
+}
+
+
+
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.category-title {
+    font-family: 'Outfit', sans-serif;
+    color: var(--gold-primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.toggle-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid var(--gold-primary);
+    border-bottom: 2px solid var(--gold-primary);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    margin-right: 5px;
+    margin-top: -5px;
+}
+
+/* When the category is collapsed, items-grid is hidden and the chevron rotates */
+.menu-category.collapsed .items-grid,
+.menu-category.collapsed .category-desc {
+    display: none;
+}
+
+.menu-category.collapsed .toggle-icon {
+    transform: rotate(-135deg);
+    /* Point right when collapsed */
+    margin-top: 0;
+}
+
+.category-desc {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: var(--text-white);
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+    background: var(--surface-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* Items Grid */
+.items-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.grid-2col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 450px) {
+    .grid-2col {
+        grid-template-columns: 1fr;
+    }
+}
+
+.menu-item {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.05);
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.menu-item:hover::before {
+    opacity: 1;
+}
+
+.menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.menu-item:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.item-name {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.item-price {
+    font-family: 'Outfit', sans-serif;
+    color: var(--gold-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.5px;
+}
+
+.item-desc {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+.item-extras {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 8px;
+    border: 1px dashed rgba(212, 175, 55, 0.2);
+    font-size: 0.85rem;
+    color: var(--gold-primary);
+}
+
+.item-extras p {
+    margin-bottom: 0.25rem;
+}
+
+.item-extras p:last-child {
+    margin-bottom: 0;
+}
+
+.placeholder {
+    text-align: center;
+    color: var(--text-gray);
+    padding: 3rem;
+    font-style: italic;
+    background: var(--surface-color);
+    border-radius: 12px;
+    border: 1px dashed var(--border-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUpFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Search Bar */
+.search-container {
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+#searchInput:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Diet Filters */
+.diet-filters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 0 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.diet-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.diet-btn {
+    background: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: var(--text-gray);
+    padding: 0.5rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.diet-btn:hover {
+    border-color: rgba(212, 175, 55, 0.35);
+    color: var(--text-white);
+}
+
+.diet-btn.active {
+    background: var(--gold-gradient);
+    color: #000;
+    border-color: transparent;
+    box-shadow: 0 3px 12px rgba(212, 175, 55, 0.25);
+}
+
+/* Diet tag badges inside items */
+.diet-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.diet-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.12rem 0.45rem;
+    border-radius: 100px;
+    letter-spacing: 0.2px;
+}
+
+.tag-vegano {
+    background: rgba(52, 170, 68, 0.12);
+    border: 1px solid rgba(52, 170, 68, 0.35);
+    color: #6fcf7f;
+}
+
+.tag-vegetariano {
+    background: rgba(80, 200, 90, 0.1);
+    border: 1px solid rgba(80, 200, 90, 0.3);
+    color: #82d492;
+}
+
+.tag-sin-tacc {
+    background: rgba(230, 180, 60, 0.1);
+    border: 1px solid rgba(230, 180, 60, 0.3);
+    color: #e6b43c;
+}
+
+.tag-sin-alcohol {
+    background: rgba(100, 160, 230, 0.1);
+    border: 1px solid rgba(100, 160, 230, 0.3);
+    color: #7db8f0;
+}
+
+/* Back to Top Button */
+#backToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gold-gradient);
+    color: #000;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: var(--transition);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+#backToTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTopBtn:active {
+    transform: scale(0.9);
+}
+
+.menu-content {
+    padding-bottom: 4rem;
+    /* Extra padding for bottom of page */
+}
+
+/* Hide items completely that don't match search */
+.menu-item.hidden {
+    display: none !important;
+}
+
+.vinos-placeholder {
+    text-align: center;
+    width: 100%;
+}
+
+.vinos-placeholder .item-desc {
+    font-size: 1.1rem;
+    margin-top: 0;
+}
+
+/* Beer Cards with Background Image */
+.beer-card {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+}
+
+.beer-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(5, 5, 5, 0.92) 0%, rgba(5, 5, 5, 0.55) 100%);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    z-index: 0;
+}
+
+.beer-card .item-header,
+.beer-card .item-desc,
+.beer-card .item-extras,
+.beer-card .beer-badges {
+    position: relative;
+    z-index: 1;
+}
+
+.beer-badges {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.beer-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    letter-spacing: 0.3px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--gold-primary);
+}
+
+/* Developer Footer */
+.dev-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dev-credit {
+    font-size: 0.75rem;
+    color: rgba(161, 161, 170, 0.6);
+    letter-spacing: 0.5px;
+}
+
+.dev-credit strong {
+    color: rgba(212, 175, 55, 0.7);
+}
+
+.dev-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(212, 175, 55, 0.8);
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(212, 175, 55, 0.05);
+    transition: var(--transition);
+    letter-spacing: 0.3px;
+}
+
+.dev-instagram:hover {
+    background: rgba(212, 175, 55, 0.12);
+    border-color: rgba(212, 175, 55, 0.5);
+    color: var(--gold-primary);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
+}
+
+.dev-tagline {
+    font-size: 0.7rem;
+    color: rgba(161, 161, 170, 0.4);
+    font-style: italic;
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Wall Street - Caja</title>
+    <meta name="description" content="Sistema de caja registradora con precios dinámicos estilo Wall Street">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="pos-header">
+        <div class="header-left">
+            <h1>📈 Bar Wall Street</h1>
+            <span class="header-subtitle">Sistema de Caja</span>
+        </div>
+        <div class="header-right">
+            <a href="/dashboard" target="_blank" class="btn-ghost" aria-label="Abrir Dashboard"
+                style="text-decoration: none;">📊 Dashboard</a>
+            <button id="show-qr-btn" class="btn-ghost" aria-label="Mostrar QR">📱 Menú QR</button>
+            <div id="status-badge" class="status-badge">
+                <span class="status-dot"></span>
+                <span id="status-text">Conectando...</span>
+            </div>
+            <time id="clock" class="clock">--:--:--</time>
+        </div>
+    </header>
+
+    <main class="pos-main">
+        <!-- Product grid -->
+        <section class="products-panel" aria-label="Productos disponibles">
+            <div class="panel-header">
+                <h2>Productos</h2>
+                <div class="category-filters" id="category-filters" role="tablist">
+                    <button class="filter-btn active" data-category="all" role="tab" aria-selected="true">Todos</button>
+                </div>
+            </div>
+            <div class="products-grid" id="products-grid" role="list">
+                <!-- Products rendered by JS -->
+            </div>
+        </section>
+
+        <!-- Cart / Order panel -->
+        <aside class="cart-panel" aria-label="Pedido actual">
+            <div class="panel-header">
+                <h2>🧾 Pedido</h2>
+                <button id="clear-cart-btn" class="btn-ghost" aria-label="Vaciar pedido">Vaciar</button>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+                <div class="cart-empty" id="cart-empty">
+                    <span class="cart-empty-icon">🛒</span>
+                    <p>Agregá productos al pedido</p>
+                </div>
+            </div>
+
+            <footer class="cart-footer">
+                <div class="cart-total">
+                    <span>Total</span>
+                    <strong id="cart-total">$0</strong>
+                </div>
+                <button id="checkout-btn" class="btn-primary btn-checkout" disabled>
+                    Cobrar
+                </button>
+            </footer>
+        </aside>
+    </main>
+
+    <!-- Admin panel toggle -->
+    <button id="admin-toggle" class="admin-toggle" aria-label="Abrir panel de administración">⚙️</button>
+
+    <!-- Admin panel overlay -->
+    <div id="admin-overlay" class="admin-overlay hidden" role="dialog" aria-modal="true"
+        aria-label="Panel de administración">
+        <div class="admin-panel">
+            <header class="admin-header">
+                <h2>⚙️ Administración</h2>
+                <button id="admin-close" class="btn-ghost" aria-label="Cerrar panel">✕</button>
+            </header>
+            <section class="admin-section">
+                <h3>📦 Gestión de Stock</h3>
+                <div id="admin-stock-list" class="admin-stock-list">
+                    <!-- Rendered by JS -->
+                </div>
+            </section>
+            <section class="admin-section">
+                <h3>🔄 Forzar Recálculo de Precios</h3>
+                <p class="admin-desc">Ejecutar manualmente el recálculo de precios o generar un Market Crash.</p>
+                <div style="display: flex; gap: 10px;">
+                    <button id="force-recalc-btn" class="btn-primary">Recalcular Precios Ahora</button>
+                    <button id="trigger-crash-btn" class="btn-danger" style="font-weight: bold;">💥 FORZAR MARKET
+                        CRASH</button>
+                </div>
+            </section>
+
+            <section class="admin-section">
+                <h3>📊 Historial de Ventas</h3>
+                <div class="admin-sales-summary" id="admin-sales-summary">
+                    <!-- Rendered by JS -->
+                </div>
+                <div class="admin-sales-history" id="admin-sales-history">
+                    <!-- Rendered by JS -->
+                </div>
+            </section>
+
+            <section class="admin-section">
+                <h3>💰 Cierre y Apertura de Caja</h3>
+                <p class="admin-desc">Gestionar la jornada de caja manual.</p>
+                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <button id="close-cashier-btn" class="btn-danger">Cerrar Caja</button>
+                    <button id="open-cashier-btn" class="btn-primary"
+                        style="background-color: var(--accent-blue); border-color: var(--accent-blue);">Abrir Caja
+                        (Reset Día)</button>
+                </div>
+                <div class="admin-sessions-list" id="admin-sessions-list">
+                    <!-- Rendered by JS -->
+                </div>
+            </section>
+
+            <section class="admin-section">
+                <h3>💾 Backup de Base de Datos</h3>
+                <p class="admin-desc">Se crea un backup automático cada hora. También podés crear uno manual.</p>
+                <button id="backup-now-btn" class="btn-primary">Crear Backup Ahora</button>
+                <div class="admin-backup-list" id="admin-backup-list">
+                    <!-- Rendered by JS -->
+                </div>
+            </section>
+
+            <section class="admin-section" id="facturapi-section">
+                <h3>🧾 FacturAPI — Fiscal</h3>
+                <p class="admin-desc">Recibos y facturas electrónicas via FacturAPI (ARCA/AFIP). Los recibos se crean
+                    automáticamente con cada venta.</p>
+
+                <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                    <button id="factura-global-btn" class="btn-primary"
+                        style="background-color: #7c3aed; border-color: #7c3aed;">
+                        📄 Emitir Factura Global
+                    </button>
+                    <button id="factura-refresh-btn" class="btn-ghost">
+                        🔄 Actualizar Recibos
+                    </button>
+                    <button id="printer-test-btn" class="btn-ghost"
+                        style="color: var(--text-main); border-color: var(--border-color);">
+                        🖨️ Probar Impresora
+                    </button>
+                </div>
+
+                <div id="factura-global-result"
+                    style="display:none; margin-bottom: 15px; padding: 12px; border-radius: 8px; background-color: var(--bg-level-2); border: 1px solid var(--color-green);">
+                    <!-- Result rendered by JS -->
+                </div>
+
+                <div id="factura-receipts-container">
+                    <p style="color: var(--text-secondary); font-size: 0.85rem;">Cargando recibos...</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Cashier close confirmation modal -->
+    <div id="cashier-modal" class="modal-overlay hidden" role="dialog" aria-modal="true"
+        aria-label="Confirmar cierre de caja">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>💰 Cierre de Caja</h2>
+                <button id="cashier-modal-close" class="btn-ghost" aria-label="Cancelar">✕</button>
+            </header>
+            <div id="cashier-modal-body" class="modal-body">
+                <!-- Rendered by JS -->
+            </div>
+            <footer class="modal-footer">
+                <div class="modal-notes">
+                    <label for="cashier-notes">Notas (opcional)</label>
+                    <input type="text" id="cashier-notes" placeholder="Ej: Turno noche, faltaron $500...">
+                </div>
+                <div class="modal-actions">
+                    <button id="cashier-cancel-btn" class="btn-ghost">Cancelar</button>
+                    <button id="cashier-confirm-btn" class="btn-danger">Confirmar Cierre</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Cashier open confirmation modal -->
+    <div id="open-cashier-modal" class="modal-overlay hidden" role="dialog" aria-modal="true"
+        aria-label="Confirmar apertura de caja">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>☀️ Inicio de Caja</h2>
+                <button id="open-cashier-modal-close" class="btn-ghost" aria-label="Cancelar">✕</button>
+            </header>
+            <div class="modal-body">
+                <p style="margin-bottom: 20px;">Al abrir la caja se eliminará todo el historial de ventas del día y se
+                    reiniciarán los precios a sus valores base.</p>
+                <div class="modal-notes" style="margin-bottom: 0;">
+                    <label for="open-cashier-date">Fecha de inicio</label>
+                    <input type="text" id="open-cashier-date" readonly
+                        style="background-color: var(--bg-level-2); color: var(--text-primary); cursor: not-allowed; font-weight: bold; border: 1px solid var(--border-color);">
+                </div>
+            </div>
+            <footer class="modal-footer">
+                <div class="modal-actions">
+                    <button id="open-cashier-cancel-btn" class="btn-ghost">Cancelar</button>
+                    <button id="open-cashier-confirm-btn" class="btn-primary"
+                        style="background-color: var(--accent-blue); border-color: var(--accent-blue);">Confirmar
+                        Apertura</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- QR Menu Modal -->
+    <div id="qr-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Código QR del Menú">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <header class="modal-header">
+                <h2>📱 Menú Escaneable</h2>
+                <button id="qr-modal-close" class="btn-ghost" aria-label="Cerrar">✕</button>
+            </header>
+            <div id="qr-modal-body" class="modal-body"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
+                <p style="margin-bottom: 20px; color: var(--text-secondary);">Los clientes pueden escanear este código
+                    para ver los precios en vivo en sus celulares.</p>
+                <div id="qrcode-container"
+                    style="background: white; padding: 16px; border-radius: 8px; margin-bottom: 16px;"></div>
+                <p id="qr-link-text" style="font-family: monospace; font-size: 14px; color: var(--color-green);"></p>
+            </div>
+            <footer class="modal-footer" style="justify-content: center;">
+                <button id="qr-print-btn" class="btn-primary">🖨️ Imprimir QR</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Order success toast -->
+    <div id="toast" class="toast hidden" role="alert" aria-live="polite">
+        <span class="toast-icon">✅</span>
+        <span id="toast-message">Pedido realizado</span>
+    </div>
+
+    <!-- Startup/Open Day Overlay -->
+    <div id="startup-overlay" class="modal-overlay hidden" style="z-index: 10000; background-color: var(--bg-level-1);"
+        role="dialog" aria-modal="true" aria-label="Inicio de Jornada">
+        <div class="modal-content" style="text-align: center; max-width: 450px;">
+            <h1 style="margin-bottom: 20px; font-size: 2rem;">📈 Bar Wall Street</h1>
+            <h2 style="margin-bottom: 20px;">Inicio de Jornada</h2>
+            <p style="margin-bottom: 20px; color: var(--text-secondary);">¿Deseas iniciar una nueva caja? Esto eliminará
+                el historial de ventas del día anterior y reiniciará todos los precios a su valor base.</p>
+
+            <div class="modal-notes" style="margin-bottom: 20px; text-align: left;">
+                <label for="startup-date">Fecha de inicio</label>
+                <input type="text" id="startup-date" readonly
+                    style="background-color: var(--bg-level-2); color: var(--text-primary); cursor: not-allowed; font-weight: bold; border: 1px solid var(--border-color); text-align: center;">
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <button id="startup-open-btn" class="btn-primary"
+                    style="background-color: var(--accent-blue); border-color: var(--accent-blue); padding: 15px; font-size: 1.1rem;">☀️
+                    Confirmar y Abrir Caja</button>
+                <button id="startup-continue-btn" class="btn-ghost" style="padding: 15px; font-size: 1.1rem;">Continuar
+                    Sin Resetear</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Blocker Overlay -->
+    <div id="mobile-blocker" class="mobile-blocker">
+        <div class="mobile-blocker-content">
+            <span class="mobile-blocker-icon">💻</span>
+            <h2>Dispositivo no soportado</h2>
+            <p>El sistema de caja (POS) está diseñado exclusivamente para pantallas grandes y tablets panorámicas.</p>
+            <p>Para ver los precios en vivo y el menú, visitá la pantalla principal.</p>
+            <a href="/menu" class="btn-primary"
+                style="margin-top: 20px; text-decoration: none; display: inline-block;">Ver Menú</a>
+        </div>
+    </div>
+
+    <!-- Login Overlay -->
+    <div id="pos-login-overlay" class="login-overlay">
+        <div class="login-card">
+            <h1>🔐 Acceso POS</h1>
+            <p>Ingresá tu PIN de personal autorizado para continuar.</p>
+            <form id="pos-login-form" class="login-form">
+                <input type="password" id="pos-login-pin" autocomplete="off" placeholder="****" maxlength="8" required
+                    autofocus>
+                <button type="submit" class="btn-primary" id="pos-login-btn">Ingresar</button>
+            </form>
+            <div id="login-error" class="login-error hidden">PIN incorrecto</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

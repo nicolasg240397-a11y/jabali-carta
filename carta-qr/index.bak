@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta QR - Jabalí</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo-container">
+                <img src="logo.jpeg" alt="Jabalí Logo" class="brand-logo">
+            </div>
+            <h1 class="logo">JABALÍ</h1>
+            <p class="subtitle">Elegí una de las tres barras</p>
+        </header>
+
+        <nav class="category-nav">
+            <button class="nav-btn active" data-target="pizzeria">Pizzería</button>
+            <button class="nav-btn" data-target="hamburgueseria">Hamburguesería</button>
+            <button class="nav-btn" data-target="tragos">Tragos</button>
+        </nav>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar plato, trago o bebida..." autocomplete="off">
+        </div>
+
+        <main class="menu-content">
+            <!-- Pizzería Section -->
+            <section id="pizzeria" class="menu-section active">
+
+                <!-- Pizza Grande -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Pizza Grande</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Muzzarella</h3>
+                                <span class="item-price">$23.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Napolitana</h3>
+                                <span class="item-price">$26.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Fugazzetta Rellena</h3>
+                                <span class="item-price">$42.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jamón y Morrón</h3>
+                                <span class="item-price">$28.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cuatro Quesos</h3>
+                                <span class="item-price">$28.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tomate y Huevo</h3>
+                                <span class="item-price">$26.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Peperoni</h3>
+                                <span class="item-price">$26.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Provolone</h3>
+                                <span class="item-price">$28.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Rúcula y Crudo</h3>
+                                <span class="item-price">$32.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Champiñones y Panceta</h3>
+                                <span class="item-price">$32.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empanadas -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Empanadas</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Carne</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Bondiola con Barbacoa</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jamón y Queso</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cuatro Quesos</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Caprese</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Humita</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Verdura</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Pollo al verdeo</h3>
+                                <span class="item-price">$4.500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pizza por Porción -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Pizza por Porción</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Muzzarella</h3>
+                                <span class="item-price">$4.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Napolitana</h3>
+                                <span class="item-price">$5.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Fugazzetta Rellena</h3>
+                                <span class="item-price">$9.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jamón y Morrón</h3>
+                                <span class="item-price">$5.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Fainá</h3>
+                                <span class="item-price">$3.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Postres -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Postres</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Panqueques con dulce de leche</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vigilante</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Flan casero con DDL</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hamburguesería Section -->
+            <section id="hamburgueseria" class="menu-section d-none">
+
+                <!-- Hamburguesas -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Hamburguesas</h2><span class="toggle-icon">?</span></div>
+                    <p class="category-desc">Acompañadas con papas o chips</p>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Malcriada</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna y queso</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Mac Grande</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, queso cheddar, lechuga, pepino, salsa Utah
+                                (mayonesa, ketchup, ajo, aceite de oliva, ciboulette, reducción de pepino en almíbar)
+                            </p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tercio de Libra</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, queso cheddar, pepino, salsa españa (cebolla,
+                                ketchup, mostaza)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">4-4-2</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, queso dambo, jamón cocido, lechuga, tomate y
+                                huevo frito</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ricky Fort</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, manteca de roquefort y cebolla caramelizada
+                            </p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Crispy</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, queso cheddar, panceta ahumada, cebolla
+                                crispy y salsa Utah</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Maradona</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Medallón de carne vacuna, provoleta, salsa criolla, tomate y lechuga
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="item-extras">
+                        <p><strong>Aclaración:</strong> Medallón vegetariano y pan sin tacc disponible para todas las
+                            opciones</p>
+                        <p>Opción pan sin tacc: <strong>+$3.500</strong></p>
+                        <p>Doble medallón: <strong>+$4.000</strong></p>
+                    </div>
+                </div>
+
+                <!-- Sandwiches -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Sandwiches</h2><span class="toggle-icon">?</span></div>
+                    <p class="category-desc">Acompañados con papas o chips</p>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Trucha al limón</h3>
+                                <span class="item-price">$21.000</span>
+                            </div>
+                            <p class="item-desc">Trucha a la plancha, lechuga, cebolla morada y salsa de queso crema,
+                                ciboulette y limón</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Bondiola</h3>
+                                <span class="item-price">$20.000</span>
+                            </div>
+                            <p class="item-desc">Pan ciabatta, bondiola de cerdo desmechada, salsa barbacoa, cebolla
+                                caramelizada y queso gratinado</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Brie y Crudo</h3>
+                                <span class="item-price">$20.000</span>
+                            </div>
+                            <p class="item-desc">Pan baguette, queso brie, jamón crudo, rúcula, aceite de oliva y pesto
+                                de tomates asados</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vegano</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Pan ciabatta, tofu a la plancha, ensalada mixta, hummus de garbanzos y
+                                veganesa de chimichurri</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tostado clásico</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                            <p class="item-desc">Pan de molde, queso dambo y jamón cocido</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vegetariano caliente o tostado</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                            <p class="item-desc">Lechuga, tomate, zanahoria, palmitos, huevo duro y queso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panchos -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Panchos</h2><span class="toggle-icon">?</span></div>
+                    <p class="category-desc">Acompañados con papas o chips</p>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ricky fort</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                            <p class="item-desc">Con manteca de roquefort y cebolla caramelizada</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Criollo</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Con salsa criolla (cebolla, tomate, morrón, ajo, perejil y vinagre)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cheddar</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Con queso cheddar cremoso</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Pelado</h3>
+                                <span class="item-price">$9.000</span>
+                            </div>
+                            <p class="item-desc">Sin nada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Para picar -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Para Picar</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Papas fritas</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Papas a caballo</h3>
+                                <span class="item-price">$13.000</span>
+                            </div>
+                            <p class="item-desc">Papas fritas con huevo frito</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Papas con cheddar</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Papas fritas con cheddar, panceta y cebolla de verdeo</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Chips de batata</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Rodajas finas de batatas fritas</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Provoleta con vegetales asados</h3>
+                                <span class="item-price">$16.000</span>
+                            </div>
+                            <p class="item-desc">A la plancha con puerro, tomates cherry y vinagreta de aceite de oliva,
+                                miel, vinagre, sal y pimienta</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Provoleta con morcilla</h3>
+                                <span class="item-price">$16.000</span>
+                            </div>
+                            <p class="item-desc">A la plancha con morcilla cortada en rodajas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ensaladas -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Ensaladas</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tropitango</h3>
+                                <span class="item-price">$17.000</span>
+                            </div>
+                            <p class="item-desc">Rúcula, queso brie, queso roquefort, tomates cherry, manzana verde,
+                                nueces y vinagreta de mostaza y miel</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ensalada Cesar</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Lechuga, rúcula, pollo, parmesano, croutones y aderezo</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ensalada Serrana</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Lechuga, rúcula, jamón crudo, croutones, parmesano, tomate y palta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Postres -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Postres</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Panqueques con dulce de leche</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vigilante</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Flan casero con DDL</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tragos Section -->
+            <section id="tragos" class="menu-section d-none">
+
+                <!-- Tragos Directos -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Tragos Directos</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Fernet con Coca</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Fernet Branca y Coca</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tintelo</h3>
+                                <span class="item-price">$8.000</span>
+                            </div>
+                            <p class="item-desc">Vino tinto, gaseosa de pomelo y rodaja de pomelo</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cuba Libre</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Ron dorado, Coca y rodaja de naranja</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Garibaldi</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Campari, jugo de naranja y rodaja de naranja, naranja/tónica</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Aperol Spritz</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                            <p class="item-desc">Aperol, soda, espumante y rodaja de naranja</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cynar Julep</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                            <p class="item-desc">Cynar, jugo de limón, almíbar, jugo de pomelo y menta</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Carpano Orange</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Vermouth Carpano, soda/tónica/pomelo y rodaja de naranja</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Ferroviario</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Fernet Branca, Carpano y soda</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Cóctel Americano</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Campari, Carpano Rosso, soda y piel de naranja</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Mint Tonic</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Branca Menta Ricetta Italiana, tónica, limón y menta</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Gin Tonic Blu</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Gin Blu, tónica, rodaja a elección: limón, pepino, naranja o pomelo</p>
+                            <p class="item-desc"><strong>Adicional frutos rojos:</strong> consultar en barra</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Sangría</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Vino Malbec, jugo de naranja, jugo de limón, almíbar de frutos rojos,
+                                limón y menta</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Malibú</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                            <p class="item-desc">Ron Malibú, naranja/7up/Coca</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Vodka Veloz</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Red Bull y vodka Sernova</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jäger Power</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Red Bull y Jägermeister</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Red Bull</h3>
+                                <span class="item-price">$7.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tragos Elaborados -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Tragos Elaborados</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Caipirinha</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                            <p class="item-desc">Cachaça, lima, jugo de limón y almíbar simple</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Caipijäger</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Jägermeister, lima, jugo de limón y almíbar simple</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Caipiroska</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                            <p class="item-desc">Vodka Sernova, lima, jugo de limón y almíbar simple</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Maycaipi</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                            <p class="item-desc">Vodka Sernova/Cachaça, lima, maracuyá, jugo de limón y almíbar simple
+                            </p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Mojito</h3>
+                                <span class="item-price">$13.000</span>
+                            </div>
+                            <p class="item-desc">Ron o Malibú, jugo de limón, menta, almíbar simple y soda</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tom Collins</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                            <p class="item-desc">Gin Blu, limón, soda y almíbar simple</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Old Fashioned</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Bourbon, dash de Bitter Angostura, azúcar y rodaja de naranja</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Negroni</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Campari, gin, Carpano Rosso y rodaja de naranja</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Negrol</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Gin, Aperol y Carpano Rosso</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Boulevardier</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Bourbon, Campari y Carpano Rosso</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Pisco Sour</h3>
+                                <span class="item-price">$13.000</span>
+                            </div>
+                            <p class="item-desc">Pisco, almíbar, limón, clara de huevo y Bitter Angostura</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Pisco Maracuyá</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                            <p class="item-desc">Pisco, almíbar, limón, clara de huevo, Bitter Angostura y maracuyá</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Martini Dry</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Gin, Carpano Dry, limón y/o aceitunas</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Manhattan</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Bourbon, Carpano Rosso y dash de Bitter Angostura</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Espresso Martini</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Café espresso, licor de café, vodka Sernova y almíbar simple</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Penicillin</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Whisky Scotch, almíbar de miel, almíbar de jengibre y jugo de limón</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">New York Sour</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                            <p class="item-desc">Whisky Scotch, clara de huevo, almíbar simple, jugo de limón y vino
+                                Malbec</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Aperol Sour</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                            <p class="item-desc">Aperol, clara de huevo, jugo de limón y almíbar simple</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Margarita</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                            <p class="item-desc">Tequila, triple sec, limón, almíbar y sal/azúcar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Whiskies -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Whiskies</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jim Beam</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jameson</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jack Daniel's</h3>
+                                <span class="item-price">$18.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Johnnie Walker Red Label</h3>
+                                <span class="item-price">$14.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Johnnie Walker Black Label</h3>
+                                <span class="item-price">$19.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Baileys</h3>
+                                <span class="item-price">$15.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shots -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Shots</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Tequila</h3>
+                                <span class="item-price">$11.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Jäger</h3>
+                                <span class="item-price">$12.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Esquí con 4 vasos de Tequila</h3>
+                                <span class="item-price">$40.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Esquí con 4 vasos de Jäger</h3>
+                                <span class="item-price">$42.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mocktails -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Mocktails (Sin Alcohol)</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Limonada</h3>
+                                <span class="item-price">$7.000</span>
+                            </div>
+                            <p class="item-desc">Jugo de limón, almíbar, rodajas de limón y agua (opcionales: menta,
+                                jengibre o pepino)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Pomelada</h3>
+                                <span class="item-price">$7.000</span>
+                            </div>
+                            <p class="item-desc">Jugo de pomelo, almíbar, rodajas de pomelo y agua</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Limonada Frutos Rojos</h3>
+                                <span class="item-price">$9.000</span>
+                            </div>
+                            <p class="item-desc">Jugo de limón, frutos rojos, almíbar de frutos rojos y agua</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Natural Mystic</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Frutilla, limón, jugo de naranja, almíbar y agua</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Aljaba</h3>
+                                <span class="item-price">$10.000</span>
+                            </div>
+                            <p class="item-desc">Jarabe de saúco, limón, almíbar, agua tónica, menta y rodaja de limón
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vinos -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Vinos</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid">
+                        <div class="menu-item" style="text-align: center; width: 100%;">
+                            <p class="item-desc" style="font-size: 1.1rem; margin-top: 0.5rem;">Consultar en barra</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cafetería Clásica -->
+                <div class="menu-category">
+                    <div class="category-header"><h2 class="category-title">Cafetería Clásica</h2><span class="toggle-icon">?</span></div>
+                    <div class="items-grid grid-2col">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Café Chico</h3>
+                                <span class="item-price">$4.000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h3 class="item-name">Café Doble</h3>
+                                <span class="item-price">$5.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Back to top button -->
+        <button id="backToTopBtn" title="Volver arriba">↑</button>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
