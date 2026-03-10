@@ -611,7 +611,10 @@
             {
               "name": "Cuba Libre",
               "price": "$11.000",
-              "desc": "Ron dorado, Coca y rodaja de limón",
+              "desc": "Ron dorado, Coca y rodaja de limon",
+              "beerCard": true,
+              "image": "img/licores/Cuba.png",
+              "style": "Ron dorado",
               "tags": []
             },
             {
