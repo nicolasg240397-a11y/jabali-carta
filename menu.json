@@ -663,42 +663,63 @@
               "name": "Cóctel Americano",
               "price": "$11.000",
               "desc": "Campari, Carpano Rosso, soda y piel de naranja",
+              "beerCard": true,
+              "image": "img/licores/Americano.png",
+              "style": "Campari",
               "tags": []
             },
             {
               "name": "Mint Tonic",
               "price": "$10.000",
               "desc": "Branca Menta Ricetta Italiana, tónica, limón y menta",
+              "beerCard": true,
+              "image": "img/licores/Mint-Tonic.png",
+              "style": "Branca Menta",
               "tags": []
             },
             {
               "name": "Gin Tonic Blu",
               "price": "$11.000",
               "desc": "Gin Blu, tónica, rodaja a elección: limón, pepino, naranja o pomelo",
+              "beerCard": true,
+              "image": "img/licores/Gin-Tonic.png",
+              "style": "Gin Tonic",
               "tags": []
             },
             {
               "name": "Sangría",
               "price": "$10.000",
               "desc": "Vino Malbec, jugo de naranja, jugo de limón, almíbar de frutos rojos, limón y menta",
+              "beerCard": true,
+              "image": "img/licores/Sangria.png",
+              "style": "Sangría",
               "tags": []
             },
             {
               "name": "Malibú",
               "price": "$12.000",
               "desc": "Ron Malibú, naranja/7up/Coca",
+              "beerCard": true,
+              "image": "img/licores/Malibu.png",
+              "style": "Ron Malibú",
               "tags": []
             },
             {
               "name": "Vodka Veloz",
               "price": "$15.000",
               "desc": "Red Bull y vodka Sernova",
+              "beerCard": true,
+              "image": "img/licores/Vodka-Veloz.png",
+              "style": "Vodka Sernova",
               "tags": []
             },
             {
               "name": "Jäger Power",
               "price": "$18.000",
               "desc": "Red Bull y Jägermeister",
+              "beerCard": true,
+              "image": "img/licores/Jager-Power.png",
+              "style": "Jägermeister",
               "tags": []
             },
             {
