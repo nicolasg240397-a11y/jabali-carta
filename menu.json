@@ -630,12 +630,18 @@
               "name": "Aperol Spritz",
               "price": "$14.000",
               "desc": "Aperol, soda, espumante y rodaja de naranja",
+              "beerCard": true,
+              "image": "img/licores/Aperol.png",
+              "style": "Aperol",
               "tags": []
             },
             {
               "name": "Cynar Julep",
               "price": "$12.000",
               "desc": "Cynar, jugo de limón, almíbar, jugo de pomelo y menta",
+              "beerCard": true,
+              "image": "img/licores/Cynar.png",
+              "style": "Cynar",
               "tags": []
             },
             {
