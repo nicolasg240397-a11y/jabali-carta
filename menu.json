@@ -302,7 +302,7 @@
           "items": [
             {
               "name": "Andes 1L",
-              "price": "$11.000,
+              "price": "$11.000",
               "available": true,
               "tags": []
             },
@@ -427,7 +427,6 @@
             {
               "name": "Mac Grande",
               "price": "$17.000",
-              "available": true,
               "available": false,
               "desc": "Medallón de carne vacuna, queso cheddar, lechuga, pepino, salsa Utah (mayonesa, ketchup, ajo, aceite de oliva, ciboulette, reducción de pepino en almíbar)",
               "tags": [
