@@ -427,7 +427,7 @@
             {
               "name": "Mac Grande",
               "price": "$17.000",
-              "available": true,
+              "available": false,
               "desc": "Medallón de carne vacuna, queso cheddar, lechuga, pepino, salsa Utah (mayonesa, ketchup, ajo, aceite de oliva, ciboulette, reducción de pepino en almíbar)",
               "tags": [
                 "vegetariano"
@@ -855,7 +855,7 @@
               "price": "$9.000",
               "available": true,
               "desc": "Oscura y cremosa con notas de café, chocolate y caramelo. Cuerpo lleno",
-              "beerCard": false,
+              "beerCard": true,
               "image": "img/cervezas/Milk-Stout.png",
               "abv": "4.2%",
               "style": "Stout",
@@ -1251,8 +1251,7 @@
               "available": true,
               "desc": "Jugo de limón, almíbar, rodajas de limón y agua (opcionales: menta, jengibre o pepino)",
               "tags": [
-                "sin-alcohol",
-                "vegano"
+                "sin-alcohol"
               ]
             },
             {
@@ -1261,8 +1260,7 @@
               "available": true,
               "desc": "Jugo de pomelo, almíbar, rodajas de pomelo y agua",
               "tags": [
-                "sin-alcohol",
-                "vegano"
+                "sin-alcohol"
               ]
             },
             {
@@ -1271,8 +1269,7 @@
               "available": true,
               "desc": "Jugo de limón, frutos rojos, almíbar de frutos rojos y agua",
               "tags": [
-                "sin-alcohol",
-                "vegano"
+                "sin-alcohol"
               ]
             },
             {
@@ -1281,8 +1278,7 @@
               "available": true,
               "desc": "Frutilla, limón, jugo de naranja, almíbar y agua",
               "tags": [
-                "sin-alcohol",
-                "vegano"
+                "sin-alcohol"
               ]
             },
             {
@@ -1291,8 +1287,7 @@
               "available": true,
               "desc": "Jarabe de saúco, limón, almíbar, agua tónica, menta y rodaja de limón",
               "tags": [
-                "sin-alcohol",
-                "vegano"
+                "sin-alcohol"
               ]
             }
           ]
@@ -1332,7 +1327,5 @@
   ]
 
 }
-
-
 
 

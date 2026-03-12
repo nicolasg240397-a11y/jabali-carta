@@ -21,11 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderItem(item, sectionId) {
         const tags = (item.tags || []).join(' ');
         const isBeer = !!item.beerCard;
-        const isSoldOut = item.available === false;
 
         let classes = 'menu-item';
         if (isBeer) classes += ' beer-card';
-        if (isSoldOut) classes += ' agotado';
 
         // Mocktail gradient class mapping
         const mocktailGradients = {
@@ -71,26 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const abvBadge = item.abv ? `<span class="beer-badge">${item.abv} ABV</span>` : '';
             const styleBadge = item.style ? `<span class="beer-badge">${item.style}</span>` : '';
             inner += `<div class="beer-badges">${abvBadge}${styleBadge}</div>`;
-
-            // Happy Hour Logic for Cervezas Tiradas (Manush)
-            // Check if current time is between 03:00 and 21:00
-            const now = new Date();
-            const hour = now.getHours();
-            const isHappyHourTime = hour >= 3 && hour < 21;
-            
-            // Note: Since all beers (isBeer=true) in Pizzería are Manush, we apply it. 
-            // In the JSON, Manush beers are specifically in category "🍺 Cervezas Tiradas" 
-            // but for simplicity, if it's a beerCard and has ABV (meaning it's not fernet/tintelo which have no ABV), it's a drafted beer.
-            if (isHappyHourTime && item.abv) {
-                inner += `<div class="happy-hour-promo">🔥 Happy Hour: 2 x $14.000</div>`;
-            }
-
         } else if (dietBadges.length > 0) {
             inner += `<div class="diet-tags-row">${dietBadges.join('')}</div>`;
-        }
-
-        if (isSoldOut) {
-            inner += `<div class="agotado-badge">AGOTADO</div>`;
         }
 
         return `<div class="${classes}"${styleAttr} data-tags="${tags}">${inner}</div>`;
