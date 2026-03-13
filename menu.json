@@ -853,7 +853,7 @@
             {
               "name": "Milk / Extra Stout",
               "price": "$9.000",
-              "available": true,
+              "available": false,
               "desc": "Oscura y cremosa con notas de café, chocolate y caramelo. Cuerpo lleno",
               "beerCard": true,
               "image": "img/cervezas/Milk-Stout.png",
@@ -1327,5 +1327,6 @@
   ]
 
 }
+
 
 
