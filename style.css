@@ -665,3 +665,25 @@ body[data-active-section="tragos"] .diet-btn[data-filter="vegano"],
 body[data-active-section="tragos"] .diet-btn[data-filter="vegetariano"] {
     display: none !important;
 }
+
+/* Agotado Styles */
+.menu-item.agotado {
+    opacity: 0.55;
+    filter: grayscale(0.85);
+    pointer-events: none;
+}
+
+.agotado-badge {
+    background: rgba(220, 53, 69, 0.15);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #ff6b6b;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}

@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let classes = 'menu-item';
         if (isBeer) classes += ' beer-card';
+        if (item.available === false) classes += ' agotado';
 
         // Mocktail gradient class mapping
         const mocktailGradients = {
@@ -41,7 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let inner = `
             <div class="item-header">
-                <h3 class="item-name">${item.name}</h3>
+                <h3 class="item-name">
+                    ${item.name}
+                    ${item.available === false ? '<span class="agotado-badge">Agotado</span>' : ''}
+                </h3>
                 ${item.price ? `<span class="item-price">${item.price}</span>` : ''}
             </div>`;
 
