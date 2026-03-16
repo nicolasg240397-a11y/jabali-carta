@@ -181,7 +181,7 @@
             {
               "name": "Fainá",
               "price": "$3.000",
-              "available": false,
+              "available": true,
               "tags": [
                 "vegetariano"
               ]
